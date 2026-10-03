@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  font-family: "Inter", sans-serif;
+  text-size-adjust: 100%;
+}
+
+body,
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+button,
+input {
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #00d9ff;
+  outline-offset: 3px;
+}
+
+svg {
+  display: block;
+}

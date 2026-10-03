@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="description" content="Отслеживайте привычки и прогресс каждый день.">
+    <title>Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <div class="app-header__top">
+          <div class="app-brand">
+            <span class="app-header__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 3v3m10-3v3M4.5 9h15M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="m9 14 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <h1>Habit Tracker</h1>
+              <p class="app-header__subtitle">Маленькие шаги каждый день</p>
+            </div>
+          </div>
+          <div class="app-header__status">
+            <div class="today-widget" id="todayWidget">
+              <span class="today-widget__label">Сегодня</span>
+              <span class="today-widget__date" id="todayDate"></span>
+            </div>
+            <div class="level-widget" id="levelWidget" title="Опыт и текущий уровень">
+              <span class="level-widget__summary">
+                <span class="level-widget__icon" id="levelIcon" aria-hidden="true">🏅</span>
+                <span id="levelLabel">Уровень 1 · Новичок</span>
+              </span>
+              <span class="level-widget__xp" id="xpLabel">0 XP</span>
+              <progress class="level-widget__progress" id="levelProgress" value="0" max="100"></progress>
+            </div>
+          </div>
+          <div class="app-header__actions">
+            <button class="templates-link" id="templatesButton" type="button">
+              <span aria-hidden="true">📝</span>
+              Шаблоны
+            </button>
+            <button class="achievements-link" id="achievementsButton" type="button">
+              <span aria-hidden="true">🏆</span>
+              Достижения
+            </button>
+            <button class="export-button" id="exportButton" type="button">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Экспорт
+            </button>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="app-header__view">
+          <div class="view-switch" role="group" aria-label="Период отображения привычек">
+            <button class="view-switch__button is-active" type="button" data-view="week" aria-pressed="true">Неделя</button>
+            <button class="view-switch__button" type="button" data-view="month" aria-pressed="false">Месяц</button>
+          </div>
+        </div>
+        <section class="stats-grid" aria-label="Статистика привычек">
+          <div class="stat-card">
+            <span class="stat-card__value" id="totalHabits">0</span>
+            <span class="stat-card__label">Всего привычек</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value" id="completedToday">0</span>
+            <span class="stat-card__label">Выполнено сегодня</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__value" id="bestStreak">0</span>
+            <span class="stat-card__label">Лучшая серия</span>
+          </div>
+        </section>
+      </header>
+
+      <button class="add-habit__button add-habit__open" id="openHabitDialog" type="button">
+        <span aria-hidden="true">+</span>
+        Добавить привычку
+      </button>
+
+      <section class="progress-panel" aria-label="Прогресс за сегодня">
+        <div class="progress-panel__heading">
+          <h2>Сегодня выполнено:</h2>
+          <span class="progress-panel__count" id="progressCount">0 из 0</span>
+        </div>
+        <progress
+          class="progress-track"
+          id="progressTrack"
+          aria-label="Привычки, выполненные сегодня"
+          value="0"
+          max="1"
+        ></progress>
+        <p class="weekly-comparison" id="weeklyComparison" aria-live="polite"></p>
+      </section>
+
+      <section class="weekly-stats" id="weeklyStats" aria-label="Статистика за неделю">
+        <article class="weekly-stat">
+          <span class="weekly-stat__label">Всего выполнено</span>
+          <strong class="weekly-stat__value" id="weeklyTotal">0 раз</strong>
+          <span class="weekly-stat__detail">за неделю</span>
+        </article>
+        <article class="weekly-stat">
+          <span class="weekly-stat__label">Лучшая привычка</span>
+          <strong class="weekly-stat__value" id="weeklyBest">—</strong>
+          <span class="weekly-stat__detail" id="weeklyBestDetail">пока нет отметок</span>
+        </article>
+        <article class="weekly-stat">
+          <span class="weekly-stat__label">Чаще пропускается</span>
+          <strong class="weekly-stat__value" id="weeklyMissed">—</strong>
+          <span class="weekly-stat__detail" id="weeklyMissedDetail">пока нет привычек</span>
+        </article>
+      </section>
+
+      <section class="calendar-panel" aria-label="Календарь привычек">
+        <div class="calendar-panel__toolbar">
+          <div class="month-navigation" id="monthNavigation" hidden>
+            <button class="month-navigation__button" id="previousMonth" type="button" aria-label="Предыдущий месяц">‹</button>
+            <h2 class="month-navigation__title" id="monthTitle"></h2>
+            <button class="month-navigation__button" id="nextMonth" type="button" aria-label="Следующий месяц">›</button>
+          </div>
+        </div>
+        <section class="habits-list" id="habitsList" aria-label="Список привычек" aria-live="polite"></section>
+      </section>
+
+      <section class="achievements-section" id="achievementsSection" aria-labelledby="achievementsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-heading__eyebrow">Ваш прогресс</p>
+            <h2 id="achievementsTitle">Достижения</h2>
+          </div>
+          <span class="section-heading__count" id="achievementCount">0 / 10</span>
+        </div>
+        <div class="achievements-grid" id="achievementsGrid"></div>
+      </section>
+
+    </main>
+
+    <div class="achievement-toast" id="achievementToast" role="status" aria-live="polite" hidden></div>
+
+    <dialog class="modal category-modal" id="habitDialog" aria-labelledby="habitDialogTitle">
+      <form class="modal__content category-modal__content" id="habitForm">
+        <div class="modal__header">
+          <div>
+            <p class="modal__eyebrow">Новый ритуал</p>
+            <h2 id="habitDialogTitle">Новая привычка</h2>
+          </div>
+          <button class="modal__close" type="button" data-close-dialog="habitDialog" aria-label="Закрыть">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <label class="modal__label" for="habitInput">Название привычки</label>
+        <input
+          class="modal__input"
+          id="habitInput"
+          name="habit"
+          type="text"
+          placeholder="Например, утренняя пробежка"
+          maxlength="80"
+          autocomplete="off"
+          required
+        >
+        <label class="modal__label" for="weeklyGoalInput">Цель на неделю</label>
+        <select class="modal__input" id="weeklyGoalInput" name="weeklyGoal">
+          <option value="1">1 день в неделю</option>
+          <option value="2">2 дня в неделю</option>
+          <option value="3">3 дня в неделю</option>
+          <option value="4">4 дня в неделю</option>
+          <option value="5">5 дней в неделю</option>
+          <option value="6">6 дней в неделю</option>
+          <option value="7" selected>7 дней в неделю</option>
+        </select>
+        <fieldset class="category-picker">
+          <legend>Выберите категорию</legend>
+          <div class="category-grid" id="categoryGrid"></div>
+        </fieldset>
+        <button class="add-habit__button modal__submit" id="createHabitButton" type="submit" disabled>
+          Добавить привычку
+        </button>
+      </form>
+    </dialog>
+
+    <dialog class="modal templates-modal" id="templatesDialog" aria-labelledby="templatesTitle">
+      <div class="modal__content templates-modal__content">
+        <div class="modal__header">
+          <div>
+            <p class="modal__eyebrow">Быстрый старт</p>
+            <h2 id="templatesTitle">Шаблоны привычек</h2>
+          </div>
+          <button class="modal__close" type="button" data-close-dialog="templatesDialog" aria-label="Закрыть">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="templates-grid" id="templatesGrid"></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal note-modal" id="noteDialog" aria-labelledby="noteDialogTitle">
+      <form class="modal__content note-modal__content" id="noteForm">
+        <div class="modal__header">
+          <div>
+            <p class="modal__eyebrow">Личный дневник</p>
+            <h2 id="noteDialogTitle">Заметка к дню</h2>
+          </div>
+          <button class="modal__close" type="button" data-close-dialog="noteDialog" aria-label="Закрыть">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m7 7 10 10M17 7 7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <label class="modal__label" for="noteInput">Что удалось сделать?</label>
+        <textarea class="modal__input note-modal__input" id="noteInput" maxlength="300" rows="4" placeholder="Например, пробежал 5 км"></textarea>
+        <div class="note-modal__actions">
+          <button class="secondary-button" id="deleteNoteButton" type="button">Удалить заметку</button>
+          <button class="add-habit__button modal__submit" type="submit">Сохранить</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

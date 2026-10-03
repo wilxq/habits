@@ -1,0 +1,244 @@
+.habit-card.is-entering {
+  animation: card-enter 0.3s ease both;
+}
+
+.habit-card.is-exiting {
+  animation: card-exit 0.3s ease both;
+  pointer-events: none;
+}
+
+.habit-day__square.is-pulsing {
+  animation: day-pulse 0.2s ease;
+}
+
+.habit-card__count.is-updating,
+.stat-card__value.is-updating {
+  animation: count-change 0.2s ease;
+}
+
+.modal[open]:not(.is-closing) {
+  animation: modal-enter 0.35s cubic-bezier(0.22, 0.75, 0.3, 1) both;
+}
+
+.modal[open]:not(.is-closing)::backdrop {
+  animation: backdrop-enter 0.3s ease both;
+}
+
+.modal.is-closing {
+  animation: modal-exit 0.3s cubic-bezier(0.22, 0.75, 0.3, 1) both;
+  pointer-events: none;
+}
+
+.modal.is-closing::backdrop {
+  animation: backdrop-exit 0.3s ease both;
+}
+
+.category-option.is-pulsing .category-option__icon {
+  animation: category-pulse 0.25s ease;
+}
+
+.habit-card__days.is-changing {
+  animation: calendar-fade 0.25s ease both;
+}
+
+.achievement-card.is-new {
+  animation: achievement-pulse 0.65s ease;
+}
+
+.level-widget.is-leveling-up .level-widget__icon {
+  animation: level-pulse 0.7s ease;
+}
+
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes card-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+
+@keyframes day-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes count-change {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+}
+
+@keyframes backdrop-enter {
+  from {
+    background-color: rgb(4 5 10 / 0%);
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    background-color: rgb(4 5 10 / 68%);
+    backdrop-filter: blur(5px);
+  }
+}
+
+@keyframes backdrop-exit {
+  from {
+    background-color: rgb(4 5 10 / 68%);
+    backdrop-filter: blur(5px);
+  }
+
+  to {
+    background-color: rgb(4 5 10 / 0%);
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes category-enter {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes category-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  @keyframes calendar-fade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes achievement-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.035);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes level-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.45) rotate(-8deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

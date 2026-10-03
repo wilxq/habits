@@ -1,0 +1,117 @@
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app {
+  width: min(100% - 48px, 800px);
+  margin: 0 auto;
+  padding: 64px 0 72px;
+}
+
+.app-header {
+  margin-bottom: 32px;
+}
+
+.app-header__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px 20px;
+  margin-bottom: 28px;
+}
+
+.app-brand {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.app-header__status {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.app-header__actions {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-content: flex-end;
+}
+
+.app-header__view {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-header__icon {
+  flex: 0 0 auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.add-habit {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.progress-panel {
+  margin-bottom: 12px;
+}
+
+.weekly-stats {
+  margin-bottom: 20px;
+}
+
+.calendar-panel {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.calendar-panel__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.habits-list {
+  display: grid;
+  gap: 16px;
+}
+
+.achievements-section {
+  margin-top: 36px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.achievement-toast {
+  position: fixed;
+  z-index: 10;
+  top: 18px;
+  left: 50%;
+  max-width: calc(100vw - 32px);
+  transform: translate(-50%, -18px);
+}

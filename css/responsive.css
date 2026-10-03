@@ -1,0 +1,272 @@
+@media (max-width: 600px) {
+  .app {
+    width: min(100% - 32px, 480px);
+    padding-top: 40px;
+  }
+
+  .app-header__top {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .app-brand {
+    order: 1;
+    flex: 1 1 100%;
+  }
+
+  .app-header__actions {
+    order: 2;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+  }
+
+  .app-header__status {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+
+  .app-header__view {
+    justify-content: center;
+  }
+
+  .app-header h1 {
+    font-size: 28px;
+  }
+
+  .stats-grid {
+    gap: 7px;
+  }
+
+  .app-header__actions {
+    gap: 6px;
+  }
+
+  .achievements-link,
+  .templates-link {
+    width: 42px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
+  }
+
+  .achievements-link > span,
+  .templates-link > span {
+    flex: 0 0 auto;
+    font-size: 16px;
+  }
+
+  .export-button {
+    width: 42px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
+  }
+
+  .export-button svg {
+    flex: 0 0 auto;
+  }
+
+  .stat-card {
+    min-height: 78px;
+    padding: 12px 10px;
+  }
+
+  .stat-card__value {
+    font-size: 20px;
+  }
+
+  .stat-card__label {
+    font-size: 10px;
+  }
+
+  .today-widget__label {
+    font-size: 14px;
+  }
+
+  .today-widget__date {
+    max-width: 190px;
+    font-size: 9px;
+  }
+
+  .level-widget {
+    min-width: 126px;
+    padding: 7px 9px;
+  }
+
+  .weekly-stats {
+    gap: 7px;
+  }
+
+  .calendar-panel__toolbar {
+    align-items: center;
+  }
+
+  .view-switch__button {
+    min-width: 68px;
+    padding: 0 10px;
+  }
+
+  .month-navigation {
+    gap: 5px;
+  }
+
+  .month-navigation__title {
+    min-width: 104px;
+    font-size: 12px;
+  }
+
+  .weekly-stat {
+    padding: 12px 9px;
+  }
+
+  .weekly-stat__label,
+  .weekly-stat__detail {
+    font-size: 9px;
+  }
+
+  .weekly-stat__value {
+    font-size: 12px;
+  }
+
+  .habit-card {
+    padding: 18px;
+  }
+
+  .habit-card__days {
+    gap: 4px;
+  }
+
+  .habit-card__days--month {
+    gap: 4px;
+  }
+
+  .habit-day__square {
+    width: 36px;
+    height: 36px;
+  }
+
+  .habit-day__square svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .modal__content {
+    padding: 22px 18px;
+  }
+
+  .category-grid {
+    gap: 8px;
+  }
+
+  .category-option {
+    min-height: 92px;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .category-option__description {
+    font-size: 9px;
+  }
+
+  .achievement-card {
+    min-height: 112px;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 10px;
+    padding: 13px;
+  }
+
+  .achievement-card__icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .achievement-card__title {
+    font-size: 12px;
+  }
+
+  .achievement-card__description {
+    font-size: 10px;
+  }
+
+  .templates-grid {
+    gap: 8px;
+  }
+
+  .habit-template {
+    min-height: 130px;
+    padding: 12px;
+  }
+
+  .habit-template__list {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .app {
+    width: calc(100% - 24px);
+  }
+
+  .app-brand {
+    gap: 11px;
+  }
+
+  .app-header__icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .app-header__subtitle {
+    font-size: 12px;
+  }
+
+  .stat-card {
+    padding: 10px 7px;
+  }
+
+  .stat-card__label {
+    font-size: 9px;
+  }
+
+  .weekly-stats {
+    gap: 5px;
+  }
+
+  .weekly-stat {
+    padding: 10px 6px;
+  }
+
+  .weekly-stat__label,
+  .weekly-stat__detail {
+    font-size: 8px;
+  }
+
+  .habit-card {
+    padding: 14px;
+  }
+
+  .habit-card__days {
+    gap: 2px;
+  }
+
+  .habit-day__square {
+    width: 32px;
+    height: 32px;
+  }
+
+  .habit-day {
+    font-size: 10px;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .month-navigation__title {
+    min-width: 88px;
+    font-size: 11px;
+  }
+}
